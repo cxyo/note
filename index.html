@@ -1,164 +1,556 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>读书笔记</title>
-    <!-- 引入Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>费曼学习法</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    padding-bottom: .3em;
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+   padding-bottom: .3em;
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border-top: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table tr th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table tr th:first-child,
+table tr td:first-child {
+    margin-top: 0;
+}
+table tr th:last-child,
+table tr td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #E6F0FE;
+}
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+
+</style>
 </head>
-<body>
-<!-- 自适应导航栏 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">AGIAgent导航站</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">首页</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://agiagent.feishu.cn/">AGIAgent知识库</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                   aria-expanded="false">
-                    服务
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="https://www.waytoagi.com/events">AI活动</a></li>
-                    <li><a class="dropdown-item" href="https://www.waytoagi.com/sites">AI网站</a></li>
-                    <li><a class="dropdown-item" href="https://www.waytoagi.com/agents">AI智能体</a></li>
-                    <li><a class="dropdown-item" href="https://www.waytoagi.com/prompts">AI提示词</a></li>
-                </ul>
-            </li>
-        </ul>
-        <!-- 搜索框 -->
-        <form class="d-flex" id="searchForm">
-            <input class="form-control me-2" type="search" id="searchInput" placeholder="搜索网站内容" aria-label="搜索">
-            <button class="btn btn-outline-success" type="submit">搜索</button>
-        </form>
-    </div>
-</nav>
-
-
-
-<!-- 自适应 Tabs 标签页 -->
-<div class="container-fluid mt-4">
-    <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="pills-feature-tab" data-bs-toggle="pill" href="#pills-feature" role="tab"
-               aria-controls="pills-feature" aria-selected="true">精选</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">文本</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#pills-writing" id="pills-writing-tab" data-bs-toggle="pill">写作</a>
-                </li>
-                <li><a class="dropdown-item" href="#pills-translation" id="pills-translation-tab" data-bs-toggle="pill">翻译</a>
-                </li>
-                <li><a class="dropdown-item" href="#pills-rewrite" id="pills-rewrite-tab" data-bs-toggle="pill">改写</a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">图片</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#pills-remove-watermark" id="pills-remove-watermark-tab"
-                       data-bs-toggle="pill">去水印</a></li>
-                <li><a class="dropdown-item" href="#pills-change-background" id="pills-change-background-tab"
-                       data-bs-toggle="pill">换背景</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">音频</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#pills-voice-changer" id="pills-voice-changer-tab"
-                       data-bs-toggle="pill">变音器</a></li>
-                <li><a class="dropdown-item" href="#pills-audio-to-text" id="pills-audio-to-text-tab"
-                       data-bs-toggle="pill">音生文</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">视频</a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#pills-video-translation" id="pills-video-translation-tab"
-                       data-bs-toggle="pill">视频翻译</a></li>
-                <li><a class="dropdown-item" href="#pills-audio-extraction" id="pills-audio-extraction-tab"
-                       data-bs-toggle="pill">音频提取</a></li>
-            </ul>
-        </li>
-    </ul>
-
-    <!-- 标签页内容 -->
-    <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-feature" role="tabpanel" aria-labelledby="pills-feature-tab">
-            <h3>精选工具</h3>
-            <p>热门写作工具、图像增强、视频编辑、音频转换。</p>
-        </div>
-        <div class="tab-pane fade" id="pills-writing" role="tabpanel" aria-labelledby="pills-writing-tab">
-            <h3>写作工具</h3>
-            <p>高效的写作工具，提高你的写作速度。</p>
-        </div>
-        <div class="tab-pane fade" id="pills-translation" role="tabpanel" aria-labelledby="pills-translation-tab">
-            <h3>翻译工具</h3>
-            <p>提供精准的翻译服务。</p>
-        </div>
-        <div class="tab-pane fade" id="pills-rewrite" role="tabpanel" aria-labelledby="pills-rewrite-tab">
-            <h3>改写工具</h3>
-            <p>帮助你重新组织和优化文章内容。</p>
-        </div>
-        <div class="tab-pane fade" id="pills-remove-watermark" role="tabpanel"
-             aria-labelledby="pills-remove-watermark-tab">
-            <h3>去水印工具</h3>
-            <p>轻松移除图片中的水印。</p>
-        </div>
-        <div class="tab-pane fade" id="pills-change-background" role="tabpanel"
-             aria-labelledby="pills-change-background-tab">
-            <h3>换背景工具</h3>
-            <p>快速替换图片的背景。</p>
-        </div>
-        <div class="tab-pane fade" id="pills-voice-changer" role="tabpanel" aria-labelledby="pills-voice-changer-tab">
-            <h3>变音器工具</h3>
-            <p>改变你的声音风格，适用于各种场景。</p>
-        </div>
-        <div class="tab-pane fade" id="pills-audio-to-text" role="tabpanel" aria-labelledby="pills-audio-to-text-tab">
-            <h3>音生文工具</h3>
-            <p>将音频内容转换为文本。</p>
-        </div>
-        <div class="tab-pane fade" id="pills-video-translation" role="tabpanel"
-             aria-labelledby="pills-video-translation-tab">
-            <h3>视频翻译工具</h3>
-            <p>提供视频内容的翻译服务。</p>
-        </div>
-        <div class="tab-pane fade" id="pills-audio-extraction" role="tabpanel"
-             aria-labelledby="pills-audio-extraction-tab">
-            <h3>音频提取工具</h3>
-            <p>从视频中提取音频内容。</p>
-        </div>
-    </div>
-</div>
-
-<!-- 引入 Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- 搜索功能的 JS -->
-<script>
-    document.getElementById('searchForm').addEventListener('submit', function (e) {
-        e.preventDefault(); // 阻止表单提交
-        var searchTerm = document.getElementById('searchInput').value.toLowerCase(); // 获取搜索框内容并转为小写
-        var items = document.querySelectorAll('.search-item'); // 获取所有要搜索的元素
-        items.forEach(function (item) {
-            if (item.textContent.toLowerCase().includes(searchTerm)) {
-                item.classList.remove('d-none'); // 显示匹配项
-            } else {
-                item.classList.add('d-none'); // 隐藏不匹配项
-            }
-        });
-    });
-</script>
+<body class='typora-export os-windows' >
+<div  id='write'  class = ''><h1><a name="前言" class="md-header-anchor"></a><span>前言</span></h1><h2><a name="高效能的费曼学习法" class="md-header-anchor"></a><span>高效能的费曼学习法</span></h2><h5><a name="核心是" class="md-header-anchor"></a><span>核心是:</span></h5><p><span>当你准备一门新知识时，必须站在传授者的立场，假设自己要向别人讲解这门知识。</span>
+<span>那么你一定要用最简洁、清晰和易于理解的语言表达出来，才能让行外地人也能听懂。</span></p><h3><a name="第一-确立你要学习的目标" class="md-header-anchor"></a><span>第一 确立你要学习的目标。</span></h3><p><span>找到和列出自己想要了解的知识，可以是一本书，也可以是一门技术，甚至是你能想象到地任意领域和事物。</span></p><h3><a name="第二-理解你要学习的对象" class="md-header-anchor"></a><span>第二 理解你要学习的对象。</span></h3><p><span>针对这个目标，准备好和筛选相关的资料，选择可靠和多个角度的信息来源，把这些内容系统化的归纳出来。</span></p><h3><a name="第三-以教代学用输出代替输入" class="md-header-anchor"></a><span>第三 以教代学，用输出代替输入。</span></h3><p><span>模拟一个传授的场景，用自己都语言把这些知识讲个话别人，用以检查自己是否已经掌握了这些知识。</span></p><h3><a name="第四-进行回顾和反思" class="md-header-anchor"></a><span>第四 进行回顾和反思。</span></h3><p><span>对其中遇到阻碍、模糊不清和有疑义的知识重新学习、回顾和反思。如有必要，可以重整旗鼓，进行再一次输出。</span></p><h3><a name="第五-实现知识的简化和吸收" class="md-header-anchor"></a><span>第五 实现知识的简化和吸收。</span></h3><p><span>最后，通过针对性的简化和整合，实现这些知识的内化和有效的应用。</span>
+<span>通过这五个步骤，我们很容易就能获得最高的内容留存率，加强学习的效果，让自己顺利地达到学习和输出知识的目的。</span></p><h2><a name="学习的目的是输出" class="md-header-anchor"></a><span>学习的目的是输出</span></h2><p><span>人们大部分的学习都是为了理解一个新的事物，或者吃透一个新的发明。</span>
+<span>但新的事物并非无中生有凭空地出现，而是建立在大量地旧事物的基础上。</span>
+<span>知识也是如此。</span>
+<span>我们的大脑将旧的信息或知识串联、拼接起来，组成新的概念、理论和信息，在传递但负责记忆和行动的部门，转化为具体的成果或知识。</span>
+<span>大脑这种富有联想力的运作方式塑造了两种根深蒂固的学习模式:</span></p><h3><a name="第一-越熟悉的概念大脑越喜欢" class="md-header-anchor"></a><span>第一 越熟悉的概念，大脑越喜欢。</span></h3><p><span>相关性是大脑学习和记忆的主要愿意。</span></p><h3><a name="第二-在不同的概念之间强行建立联系也是大脑的特长" class="md-header-anchor"></a><span>第二 在不同的概念之间强行建立联系，也是大脑的特长。</span></h3><p><span>这是我们与生俱来的创造性的功能，大脑会为了一切可以对比的事物进行匹配，以便建立一个合理的解释。</span>
+<span>人类所有的新知识，其实都是由旧知识构成和解释的。</span>
+<span>我们获取新知识的过程，本质上便是通过大脑的有机联想，将新的概念插入到旧的体系中，再在动态的学习中将之转化成一个合乎逻辑的富有张力和强劲生命力的知识系统。</span>
+<span>输出不仅仅是学习的最佳方式，同时也是学习的终极目的。</span>
+<span>防我们要学习一种新知识时，用最直白的语言去阐述它时，大脑就会从记忆库中提取那些熟悉的信息，在旧地知识个新的概念中产生强大地关联，新的知识便容易得到大脑彻底的理解。</span>
+<span>嘴重要的一步是，你要反复低进行这一过程，屎大脑多进行创造性地联想，我们对鑫知识地吸收和应用的能力才会变得更强。</span></p><h2><a name="本书的要点" class="md-header-anchor"></a><span>本书的要点</span></h2><p><span>第一部分，首先介绍了学习地本质和现实的难点，并且详细阐述了费曼分析法的核心要素、思维模式个主要步骤。</span>
+<span>第二部分，讲述了运用费曼分析法的第一步:如何确立和锁定学习目标。</span>
+<span>第三、四部分，深入讲解了理解一门知识的技巧和以输出代替输入的学习方式。</span>
+<span>第五、六部分，通过对知识输出过程的回顾，我们可以聪中发现自己的弱项，重新理解和解决学习中的难点，进行再一次输出。</span></p><h1><a name="第一部分-学习的本质" class="md-header-anchor"></a><span>第一部分 学习的本质</span></h1><h5><a name="关键词-思维" class="md-header-anchor"></a><span>关键词: 思维</span></h5><p><span>费曼学习法是一种顶级的思维方式，它能帮助我们真正掌握一门知识，因为它揭示了学习和思维的本质。</span></p><h2><a name="第一章-掌握一门知识有多难" class="md-header-anchor"></a><span>第一章 掌握一门知识有多难</span></h2><h3><a name="两种学习你是哪一种" class="md-header-anchor"></a><span>两种学习你是哪一种？</span></h3><p><span>现在学会一门新游戏越来越容易，可掌握一门新知识却越来越难。</span></p><h4><a name="传统学习方法" class="md-header-anchor"></a><span>传统学习方法:</span></h4><p><span>以输入为主——死记硬背。</span>
+<span>教条主义——老师/书上说什么就是什么。</span>
+<span>标准化应用——生搬硬套。</span>
+<span>它的唯一目的就是输入，追求外嘴段时间内胖人记住最多的知识，然后外考试地场景中过关(标准化应用)。</span></p><h3><a name="与真实世界建立有效联系" class="md-header-anchor"></a><span>与真实世界建立有效联系</span></h3><p><span>我们还需要明白了解知识、掌握知识的目的。</span>
+<span>很多人觉得:学习是要改变将来的命运，是为了出人头地。</span>
+<span>潜台词是:学习改变不了今天。</span>
+<span>在这种思维的主导下，学习成了一种沉重的使命。</span>
+<span>把学习看得越严肃，掌握知识就越难。</span>
+<span>可事实真相却不是这样。</span>
+<strong><span>真正高质量的学习，一定能够让人融入真实世界。</span>
+<span>学习最重要的是真实，它必须让人可以与时代同步，理解身边正在发生的一切，促使我们对知识的运用和创新。</span>
+<span>换言之，通过学习，我们要于真实的世界有效的联系。</span>
+<span>优秀人才在学习一门知识时，都是专注得将知识与现实场景紧密的结合。</span>
+<span>只有将学习从功利型的导向中收回来，专注于如何吃透一门知识，怎样让这些知识在今天就可以让自己变得更高，你才能真正得提高学习能力。</span>
+<span>提高学习的能力，比学到一门知识更重要。</span></strong></p><h2><a name="第二章-何为费曼学习法" class="md-header-anchor"></a><span>第二章 何为费曼学习法</span></h2><h1><a name="第二部分-确立一个学习对象" class="md-header-anchor"></a><span>第二部分 确立一个学习对象</span></h1><h2><a name="第三章-我们为什么学习" class="md-header-anchor"></a><span>第三章 我们为什么学习</span></h2><h2><a name="第四章-聚焦目标" class="md-header-anchor"></a><span>第四章 聚焦目标</span></h2><h2><a name="第五章-规划和目标建立强联系" class="md-header-anchor"></a><span>第五章 规划:和目标建立强联系</span></h2><h2><a name="第六章-费曼技巧目标原则" class="md-header-anchor"></a><span>第六章 费曼技巧:目标原则</span></h2><h1><a name="第三部分-理解我们要学习的知识" class="md-header-anchor"></a><span>第三部分 理解我们要学习的知识</span></h1><h2><a name="第七章-归类和对比知识的来源" class="md-header-anchor"></a><span>第七章 归类和对比知识的来源</span></h2><h2><a name="第八章-形成一张思维和流程导图" class="md-header-anchor"></a><span>第八章 形成一张思维和流程导图</span></h2><h2><a name="第九章-阅读和记忆的原则" class="md-header-anchor"></a><span>第九章 阅读和记忆的原则</span></h2><h2><a name="第十章-第一次复述" class="md-header-anchor"></a><span>第十章 第一次复述</span></h2><h2><a name="第十一章-费曼技巧系统化原则" class="md-header-anchor"></a><span>第十一章 费曼技巧:系统化原则</span></h2><h1><a name="第四部分-输出是最强大的学习力" class="md-header-anchor"></a><span>第四部分 输出是最强大的学习力</span></h1><h2><a name="第十二章-以教代学" class="md-header-anchor"></a><span>第十二章 以教代学</span></h2><h2><a name="第十三章-用输出倒逼输入" class="md-header-anchor"></a><span>第十三章 用输出倒逼输入</span></h2><h2><a name="第十四章-第二次复述" class="md-header-anchor"></a><span>第十四章 第二次复述</span></h2><h2><a name="第十五章-费曼技巧输出原则" class="md-header-anchor"></a><span>第十五章 费曼技巧:输出原则</span></h2><h1><a name="第五部分-回顾和反思" class="md-header-anchor"></a><span>第五部分 回顾和反思</span></h1><h2><a name="第十六章-怀疑和探索让我们更聪明" class="md-header-anchor"></a><span>第十六章 怀疑和探索让我们更聪明</span></h2><h2><a name="第十七章-寻找反正" class="md-header-anchor"></a><span>第十七章 寻找反正</span></h2><h2><a name="第十八章-内容留存率决定了我们学习的效能" class="md-header-anchor"></a><span>第十八章 内容留存率决定了我们学习的效能</span></h2><h2><a name="第十九章-费曼技巧回顾原则" class="md-header-anchor"></a><span>第十九章 费曼技巧:回顾原则</span></h2><h1><a name="第六部分-简化和吸收" class="md-header-anchor"></a><span>第六部分 简化和吸收</span></h1><h2><a name="第二十章-好东西太多也会消化不良" class="md-header-anchor"></a><span>第二十章 好东西太多，也会消化不良</span></h2><h2><a name="第二十一章-纵向拓展和精进" class="md-header-anchor"></a><span>第二十一章 纵向拓展和精进</span></h2><h2><a name="第二十二章-深度挖掘实现知识的内化" class="md-header-anchor"></a><span>第二十二章 深度挖掘，实现知识的内化</span></h2><h2><a name="第二十三章-第三次复述" class="md-header-anchor"></a><span>第二十三章 第三次复述</span></h2><h2><a name="第二十四章-费曼技巧简化原则" class="md-header-anchor"></a><span>第二十四章 费曼技巧:简化原则</span></h2><p>&nbsp;</p></div>
 </body>
 </html>
